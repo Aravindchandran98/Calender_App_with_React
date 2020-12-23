@@ -4,9 +4,9 @@ const CalendarComponent = () => {
     var [date,setDate] = useState(new Date());
     var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     var week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    var noOfDaysInMonth ;
+    var noOfDaysInMonth ; var spaces;
     var monthStarts = ()=>{
-        // for (let index = 0; index < month.length; index++) {
+        // for (let index = 0; index < month.length; index++) { 
         //     switch(month[index]){
         //         case "Jan","Mar","May","Jul","Aug","Oct","Dec" : 
         //               noOfDaysInMonth = 31;
@@ -26,7 +26,8 @@ const CalendarComponent = () => {
         //     }
         // }
         var date2 = new Date(`${date.getFullYear()}-${date.getMonth()}-1`)
-        console.log(date2.getDay());
+        spaces = date2.getDay();
+        console.log(spaces);
     }
     return (
         <Fragment>
@@ -57,7 +58,7 @@ const CalendarComponent = () => {
                             <th>{week[6]}</th>
                         </tr>
                         <tr>
-                            <td>{}</td>
+                            <td>{monthStarts}</td>
                         </tr>
                     </table>
                 </article>
