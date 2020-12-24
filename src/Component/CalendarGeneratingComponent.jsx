@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 
-const CalendarComponent = () => {
-    var date = new Date("2020-10-01");
+const CalendarGeneratingComponent = () => {
+    var a="2020-10-01";
+    var date = new Date(a);
     var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     var week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     var lastDateInTheFirstWeek = week.length-monthStarts();
@@ -90,4 +91,4 @@ const CalendarComponent = () => {
     )
 }
 
-export default CalendarComponent;
+export default CalendarGeneratingComponent;

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import CalendarComponent from './Component/CalendarComponent';
+import CalenderOuterLayout from './Component/CalenderOuterLayout';
 
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
     render() { 
         return ( 
             <Fragment>
-                <CalendarComponent/>
+                <CalenderOuterLayout/>
                
             </Fragment>
          );
