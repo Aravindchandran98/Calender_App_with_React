@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import CalenderOuterLayout from './Component/CalenderOuterLayout';
+import HomeComponent from './Component/HomeComponent/Home';
 
 
 class App extends Component {
@@ -10,8 +11,9 @@ class App extends Component {
     render() { 
         return ( 
             <Fragment>
-                <CalenderOuterLayout/>
-               
+                <div style = {{backgroundImage : `url("/bg_img.jpg")` }}>
+                <HomeComponent/>
+                </div>
             </Fragment>
          );
     }
