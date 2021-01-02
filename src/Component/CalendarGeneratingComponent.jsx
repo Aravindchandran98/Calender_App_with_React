@@ -1,8 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const CalendarGeneratingComponent = () => {
-    var a="2020-10-01";
-    var date = new Date(a);
+const CalendarGeneratingComponent = (props) => {
+    // var a="2020-10-01";
+    var [datesUniqueId,setdatesUniqueId] = useState("");
+    var calendarGeneratingDate = props.calendarGeneratingDate;
+    console.log(uuidv4());
+    console.log(uuidv4());
+    console.log(uuidv4());
+    var date = new Date(calendarGeneratingDate);
     var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     var week = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     var lastDateInTheFirstWeek = week.length-monthStarts();
@@ -41,6 +47,8 @@ const CalendarGeneratingComponent = () => {
             }
     }
 
+    // var [datesUniqueId,setdatesUniqueId] = useState(1);
+
     function monthStarts() {
         var date2 = new Date(`${date.getFullYear()}-${date.getMonth()+1}-${1}`)
         spaces = date2.getDay();
@@ -48,7 +56,25 @@ const CalendarGeneratingComponent = () => {
         return spaces;
     }
 
+    var handleButtonClick=(e) => {
+        console.log(typeof e.target.id);
+        console.log(e.target.innerHTML,"hi i am working");
+        var tempVar = e.target.id;
+        setdatesUniqueId(tempVar);
+        console.log("i am updated",datesUniqueId);
+        console.log(datesUniqueId);
+    }
+
+    function handleSelection(e){
+        e.preventDefault();
+        console.log("empty");
+        console.log("i am form after submission",datesUniqueId);
+        
+    }
+
+
     return (
+        
         <Fragment>
             <section>
                 <article>
@@ -71,20 +97,38 @@ const CalendarGeneratingComponent = () => {
                         <tbody>
                             <tr>
                                 {emptyArray.map((currentValue) => (
-                                <td>{currentValue}</td>
+                                <td id={uuidv4()}>{currentValue}</td>
                                 ))}
                                 {datesArray.map((currentValue) => (
-                                <td>{currentValue}</td>
+                                <td><button id={uuidv4()} onClick={handleButtonClick}>{currentValue}</button></td>
                                 ))}
                             </tr>
                             {lastFiveColumnArray.map(() => (
                                 <tr>{week.map(() => (
-                                        <td>{dateIncreament >=(noOfDaysInMonth) ? " " : (dateIncreament+=1) }</td>
+                                        <td>{dateIncreament >=(noOfDaysInMonth) ? " "  :
+                                        <button id={uuidv4()} onClick={handleButtonClick}>{(dateIncreament+=1)}</button>}</td>
                                     ))}
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <div>
+                        {datesUniqueId+"check"}
+                        <form onSubmit={handleSelection}>
+                        <select name="attendance" id="attendance">
+                            <option value="selectAttendance">--SELECT ATTENDANCE--</option>
+                            <option value="present">Present</option>
+                            <option value="leave">Leave</option>
+                            <option value="weekoff">W/O</option>
+                            <option value="holiday">Holiday</option>
+                        </select>
+                        <input type="submit"/>
+                        </form>
+                    </div>
                 </article>
             </section>
         </Fragment>
